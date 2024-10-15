@@ -1,0 +1,146 @@
+#Oski Stole Your Power
+"""Oski hacked your computer and you can no longer use x**y or pow(x, y). Find
+a different way (by writing a function) that can compute x raised to the power
+of y.
+>>> x = 2
+>>> y = 3
+>>> computePower(x, y)
+8"""
+
+def computePower(x, y):
+    result = 1
+    for i in range(y):
+        result *= x
+    return result
+x=2 
+y=3
+print(computePower(x, y)) 
+
+
+#What Should I Wear?
+"""You are trying to decide what to wear to the Python DeCal lecture, but you
+are only concerned about the days lowest and highest temperatures. Write a
+function that takes in a list as input and returns a tuple with the min and max
+as two values.
+>>> readings = [15, 14, 17, 20, 23, 28, 20]
+>>> temperatureRange(readings)
+(14, 28)"""
+
+def temperaturerange(readings):
+    return(min(readings),max(readings))
+readings = [15, 14, 17, 20, 23, 28, 20]
+print(temperaturerange(readings))
+
+#Check if its the Weekend
+"""All your classes have assigned problem sets due next week, and you want to
+check if it is the weekend so you have time to work on them. Write a function
+that takes a day of the week (represented as an integer, where 1 = Monday, 2
+= Tuesday, etc) and returns True if its a weekend and False if otherwise.
+>>> day = 6 # Saturday
+>>> isWeekend(day)
+True
+"""
+def isWeekend(day):
+    return day == 6 or day == 7
+day=6
+print(isWeekend(day)) 
+day=5
+print(isWeekend(day)) 
+
+#4 Fuel Efficiency Calculator
+"""The Python DeCal wants to take a trip to the Lick Observatory ( San Jose, CA) and they want to pick the best car. Write a function that takes the distance traveled (in miles) and the amount of fuel consumed (in gallons) as input and returns the fuel efficiency.
+>>> distance = 70 # miles
+>>> fuel = 21.5 # gallons
+>>> fuel_efficiency(distance, fuel)
+3.26
+"""
+def fuel_efficiency(distance, fuel):
+    return(distance/fuel,2)
+distance=70
+fuel=21.5
+print (fuel_efficiency(distance, fuel))
+
+#5 Secret Code
+"""Write a function that takes an integer as input and moves its last digit to the front of the number. You may NOT convert the input to a string. Hint: Try modulus (%) and floor division. (\\) to solve this problem.
+>>> n = 12345
+>>> decodeNumbers(n)
+51234
+"""
+
+
+#6 Min & Max but with Loops!
+#Oh no! Oski hacked you computer again... now you have lost the ability to use min() and max().
+"""6.1 For Loops
+Write two functions to manually find the minimum and maximum values in a list of numbers with for loops.
+>>> nums = [2024, 98, 131, 2, 3, 72]
+>>> find_min_with_for_loop(nums)
+2
+>>> find_max_with_for_loops(nums)
+2024"""
+nums = [2024, 98, 131, 2, 3, 72]
+def find_max_with_for_loop(nums):
+    greatest = nums[0]
+    for number in nums:
+        if number > greatest:
+            greatest = number
+    return greatest
+
+print(find_max_with_for_loop(nums))
+
+def find_min_with_for_loop(nums):
+    smallest = nums[0]
+    for number in nums:
+        if number < smallest:
+            smallest = number
+    return smallest
+
+print(find_min_with_for_loop(nums))
+
+#6.2 While Loops
+"""Write two functions to manually find the minimum and maximum values in a list of numbers with while loops.
+>>> nums = [2024, 98, 131, 2, 3, 72]
+>>> find_min_with_while_loop(nums)
+2
+>>> find_max_with_while_loops(nums)
+2024"""
+def find_min_with_while_loop(nums):
+    i = 0
+    small = nums[0]
+    while i < len(nums):
+        if nums[i]< small:
+            small = nums[i]
+        i += 1
+    return small
+print(find_min_with_while_loop(nums))
+
+def find_max_with_while_loop(nums):
+    i = 0
+    large = nums[0]
+    while i < len(nums):
+        if nums[i]> large:
+            large = nums[i]
+        i += 1
+    return large
+print(find_max_with_while_loop(nums))
+
+
+#7 Counting Vowels
+"""Write a function that takes a string as an input and returns the number of vowels in the string and the number of consonants in the string as tuple. Don’t forget about capital letters! Hint: You can use .isalpha() to check if a character is a letter.
+>>> text = "UC Berkeley, founded in 1868!"
+>>> vowel_and_consonant_count(text)
+(4, 11)
+def vowel_and_consonant_count(text):
+"""
+def vowel_and_consonant_count(text):
+    vowels = "aeiouAEIOU"
+    vowel_count = 0
+    consonant_count = 0
+    for char in text:
+        if char.isalpha():
+            if char in vowels:
+                vowel_count += 1
+            else:
+                consonant_count += 1
+    return (vowel_count,consonant_count)
+text = "UC Berkeley, founded in 1868!"
+print(vowel_and_consonant_count(text))
