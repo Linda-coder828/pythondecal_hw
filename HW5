@@ -1,0 +1,169 @@
+#1 The Odd Ones Out
+'''You’ve come across a dataset of star magnitudes (brightnesses) from various
+stellar clusters. For your interstellar research, you only care about clusters
+where every star’s magnitude is odd. Given a 2D array, write a function to find
+the rows where ALL values are odd numbers.
+>>> arr = np.array([[1, 2, 3], [5, 7, 9], [2, 4, 6], [7, 7, 7]])
+>>> onlyOdd(arr)
+array([[5, 7, 9],
+[7, 7, 7]])'''
+
+import numpy as np
+
+def onlyOdd(arr):
+    odd_rows = arr[np.all(arr % 2 == 1, axis=1)]
+    
+    return odd_rows
+
+arr = np.array([[1, 2, 3], [5, 7, 9], [2, 4, 6], [7, 7, 7]])
+print(onlyOdd(arr))
+
+
+#2 Let’s play Checkers!
+'''You’ve decided to take a break from your cutting-edge research and play checkers
+with your friend. Unfortunately, there is no checkerboard in sight! Therefore
+you must create one yourself.
+2.1
+Start by writing a function that creates a 8x8 square matrix with only zeros.
+>>> checkerboard()
+array([[0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0]] )'''
+
+import numpy as np
+
+def checkerboard():
+    board = np.zeros((8, 8), dtype=int)
+
+    return board
+
+print(checkerboard())
+
+#2.2 
+'''For only the odd rows, make an alternating pattern of ones and zeroes.
+>>> checkerboard()
+array([[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 0],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 0]] )'''
+
+import numpy as np
+
+def checkerboard():
+    board = np.zeros((8, 8), dtype=int)
+    board[::2, ::2] = 1  
+    board[::2, 1::2] = 0 
+
+    return board
+
+print(checkerboard())
+
+#2.3
+'''Finish the checkerboard with the even rows.
+>>> checkerboard()
+array([[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 1, 0, 1, 0, 1, 0, 1],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 1, 0, 1, 0, 1, 0, 1],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 1, 0, 1, 0, 1, 0, 1],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 1, 0, 1, 0, 1, 0, 1]] )'''
+
+import numpy as np
+
+def checkerboard():
+    board = np.zeros((8, 8), dtype=int)   
+    board[::2, ::2] = 1  
+    board[::2, 1::2] = 0  
+    board[1::2, ::2] = 0 
+    board[1::2, 1::2] = 1
+    
+    return board
+
+print(checkerboard())
+
+#2.4
+'''Re-write your function such that the checkerboard begins with a 0 instead.
+>>> reverse_checkerboard()
+array([[0, 1, 0, 1, 0, 1, 0, 1],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 1, 0, 1, 0, 1, 0, 1],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 1, 0, 1, 0, 1, 0, 1],
+[1, 0, 1, 0, 1, 0, 1, 0],
+[0, 1, 0, 1, 0, 1, 0, 1],
+[1, 0, 1, 0, 1, 0, 1, 0]] )'''
+
+import numpy as np
+
+def reverse_checkerboard():
+    board = np.zeros((8, 8), dtype=int)
+    board[::2, ::2] = 0  
+    board[::2, 1::2] = 1 
+    board[1::2, ::2] = 1 
+    board[1::2, 1::2] = 0
+
+    return board
+
+print(reverse_checkerboard())
+
+#3 The Expanding Universe
+'''You have now become fascinated with how dark energy is making galaxies ac-
+celerate away from us. Write a function that takes in a string and a number,
+and returns the string with the specified number of spaces inserted between each
+letter, simulating the expansion of space!
+>>> universe = np.array([‘galaxy’, ’clusters’])
+>>> expansion(universe, 1)
+array([‘g a l a x y’, ‘c l u s t e r s’])
+>>> expansion(universe, 2)
+array([‘g a l a x y’, ‘c l u s t e r s’])'''
+
+import numpy as np
+
+def expansion(words, spaces):
+    space_str = ' ' * spaces
+    expanded_words = np.array([' '.join(list(word)) for word in words])
+    expanded_words = np.array([space_str.join(list(word)) for word in words])
+    
+    return expanded_words
+
+universe = np.array(['galaxy', 'clusters'])
+print(expansion(universe, 1))
+print(expansion(universe, 2))
+
+
+#4
+'''While studying exoplanets, you decide to identify only the second-largest planet
+in each system. Write a function that takes a 2D numpy array and returns an
+array containing only the second-largest value in each column (system).
+>>> np.random.seed(42)
+>>> planets = np.random.randint(100, 1000, (5, 5))
+array([[192, 898, 747, 692, 914],
+[849, 249, 370, 658, 451],
+[802, 785, 143, 198, 616],
+[696, 926, 269, 788, 642],
+[583, 372, 468, 899, 911]])
+>>> secondLargest(planets)
+array([802, 898, 468, 788, 911])'''
+
+import numpy as np
+
+def secondLargest(arr):
+    sorted_arr = np.sort(arr, axis=0)[::-1]
+    second_largest_values = sorted_arr[1]
+    return second_largest_values
+
+np.random.seed(42)
+planets = np.random.randint(100, 1000, (5, 5))
+print(planets)
+print(secondLargest(planets))
